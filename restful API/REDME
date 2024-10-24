@@ -1,0 +1,283 @@
+-- mysql> show databases;
+-- +--------------------+
+-- | Database           |
+-- +--------------------+
+-- | blogging           |
+-- | information_schema |
+-- | mysql              |
+-- | performance_schema |
+-- | sys                |
+-- +--------------------+
+-- 5 rows in set (0.01 sec)
+
+-- mysql> \!clear
+-- ERROR:
+-- Usage: \! shell-command
+-- mysql> clear
+-- mysql> \! clear
+-- 'clear' is not recognized as an internal or external command,
+-- operable program or batch file.
+-- mysql> ^L
+-- mysql> \! clear
+-- 'clear' is not recognized as an internal or external command,
+-- operable program or batch file.
+-- mysql> create database movie;
+-- Query OK, 1 row affected (0.00 sec)
+
+-- mysql> show databases;
+-- +--------------------+
+-- | Database           |
+-- +--------------------+
+-- | blogging           |
+-- | information_schema |
+-- | movie              |
+-- | mysql              |
+-- | performance_schema |
+-- | sys                |
+-- +--------------------+
+-- 6 rows in set (0.00 sec)
+
+-- mysql> ]use movie;
+-- ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ']use movie' at line 1
+-- mysql> create table Actors( Nmaw Varchar(20) NOT NULL , Gender ENUM("male", "female" , "transgender") NOT NULL, CHARGES dECIMAL, id;
+-- ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+-- mysql> create TABLE Actors( NAME Varchar(20) NOT NULL , Gender ENUM("male", "female" , "transgender") NOT NULL, CHARGES Dedicmal, id Int AUTO_INCREMENT, PRIMARY KEY(id));
+-- ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Dedicmal, id Int AUTO_INCREMENT, PRIMARY KEY(id))' at line 1
+-- mysql> create TABLE Actors( NAME Varchar(20) NOT NULL , Gender ENUM("male", "female" , "transgender") NOT NULL, CHARGES Decimal, id Int AUTO_INCREMENT, PRIMARY KEY(id));
+-- ERROR 1046 (3D000): No database selected
+-- mysql> ]use database movie;
+-- ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ']use database movie' at line 1
+-- mysql> use movie;
+-- Database changed
+-- mysql> create TABLE Actors( NAME Varchar(20) NOT NULL , Gender ENUM("male", "female" , "transgender") NOT NULL, CHARGES Decimal, id Int AUTO_INCREMENT, PRIMARY KEY(id));
+-- Query OK, 0 rows affected (0.02 sec)
+
+-- mysql> show tables;
+-- +-----------------+
+-- | Tables_in_movie |
+-- +-----------------+
+-- | actors          |
+-- +-----------------+
+-- 1 row in set (0.00 sec)
+
+-- mysql> INSERT INTO actors (NAME , CHARGES ,GENDERS) VALUES("CHRIS",350000,"MALE"), ("SALMIN",5559255,"MALE"),("AVI" 8956232,"MALE");
+-- ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '8956232,"MALE")' at line 1
+-- mysql> INSERT INTO actors (NAME , CHARGES ,GENDERS) VALUES("CHRIS",350000,"MALE"), ("SALMIN",5559255,"MALE"),("AVI", 895
+-- 6232,"MALE");
+-- ERROR 1054 (42S22): Unknown column 'GENDERS' in 'field list'
+-- mysql> INSERT INTO actors (NAME , CHARGES ,Gender) VALUES("CHRIS",350000,"MALE"), ("SALMIN",5559255,"MALE"),("AVI", 8956
+-- 232,"MALE");
+-- Query OK, 3 rows affected (0.00 sec)
+-- Records: 3  Duplicates: 0  Warnings: 0
+
+-- mysql> SELECT * FROM ACTORS
+--     -> ^C
+-- mysql> SELECT * FROM ACTORS;
+-- +--------+--------+---------+----+
+-- | NAME   | Gender | CHARGES | id |
+-- +--------+--------+---------+----+
+-- | CHRIS  | male   |  350000 |  1 |
+-- | SALMIN | male   | 5559255 |  2 |
+-- | AVI    | male   | 8956232 |  3 |
+-- +--------+--------+---------+----+
+-- 3 rows in set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS;
+
+--        ^C
+-- mysql> INSERT INTO actors (NAME , CHARGES ,Gender) VALUES("MK",350000,"MALE"), ("SHHH",5559255,"MALE"),("AYYYY", 8956232,"MALE"
+-- );
+-- Query OK, 3 rows affected (0.00 sec)
+-- Records: 3  Duplicates: 0  Warnings: 0
+
+-- mysql> SELECT * FROM ACTORS;
+-- +--------+--------+---------+----+
+-- | NAME   | Gender | CHARGES | id |
+-- +--------+--------+---------+----+
+-- | CHRIS  | male   |  350000 |  1 |
+-- | SALMIN | male   | 5559255 |  2 |
+-- | AVI    | male   | 8956232 |  3 |
+-- | MK     | male   |  350000 |  4 |
+-- | SHHH   | male   | 5559255 |  5 |
+-- | AYYYY  | male   | 8956232 |  6 |
+-- +--------+--------+---------+----+
+-- 6 rows in set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS WHERE CHARGES > 9898989898;
+-- Empty set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS WHERE CHARGES < 9898989898;
+-- +--------+--------+---------+----+
+-- | NAME   | Gender | CHARGES | id |
+-- +--------+--------+---------+----+
+-- | CHRIS  | male   |  350000 |  1 |
+-- | SALMIN | male   | 5559255 |  2 |
+-- | AVI    | male   | 8956232 |  3 |
+-- | MK     | male   |  350000 |  4 |
+-- | SHHH   | male   | 5559255 |  5 |
+-- | AYYYY  | male   | 8956232 |  6 |
+-- +--------+--------+---------+----+
+-- 6 rows in set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS WHERE ID < 4;
+-- +--------+--------+---------+----+
+-- | NAME   | Gender | CHARGES | id |
+-- +--------+--------+---------+----+
+-- | CHRIS  | male   |  350000 |  1 |
+-- | SALMIN | male   | 5559255 |  2 |
+-- | AVI    | male   | 8956232 |  3 |
+-- +--------+--------+---------+----+
+-- 3 rows in set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS WHERE NAME = AVI;
+-- ERROR 1054 (42S22): Unknown column 'AVI' in 'where clause'
+-- mysql> SELECT * FROM ACTORS WHERE NAME = "AVI";
+-- +------+--------+---------+----+
+-- | NAME | Gender | CHARGES | id |
+-- +------+--------+---------+----+
+-- | AVI  | male   | 8956232 |  3 |
+-- +------+--------+---------+----+
+-- 1 row in set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS;
+-- +--------+--------+---------+----+
+-- | NAME   | Gender | CHARGES | id |
+-- +--------+--------+---------+----+
+-- | CHRIS  | male   |  350000 |  1 |
+-- | SALMIN | male   | 5559255 |  2 |
+-- | AVI    | male   | 8956232 |  3 |
+-- | MK     | male   |  350000 |  4 |
+-- | SHHH   | male   | 5559255 |  5 |
+-- | AYYYY  | male   | 8956232 |  6 |
+-- +--------+--------+---------+----+
+-- 6 rows in set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS WHERE NAME LIKE "A%";
+-- +-------+--------+---------+----+
+-- | NAME  | Gender | CHARGES | id |
+-- +-------+--------+---------+----+
+-- | AVI   | male   | 8956232 |  3 |
+-- | AYYYY | male   | 8956232 |  6 |
+-- +-------+--------+---------+----+
+-- 2 rows in set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS WHERE NAME LIKE "%N";
+-- +--------+--------+---------+----+
+-- | NAME   | Gender | CHARGES | id |
+-- +--------+--------+---------+----+
+-- | SALMIN | male   | 5559255 |  2 |
+-- +--------+--------+---------+----+
+-- 1 row in set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS WHERE NAME LIKE "%R%";
+-- +-------+--------+---------+----+
+-- | NAME  | Gender | CHARGES | id |
+-- +-------+--------+---------+----+
+-- | CHRIS | male   |  350000 |  1 |
+-- +-------+--------+---------+----+
+-- 1 row in set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS WHERE NAME LIKE "%H%";
+-- +-------+--------+---------+----+
+-- | NAME  | Gender | CHARGES | id |
+-- +-------+--------+---------+----+
+-- | CHRIS | male   |  350000 |  1 |
+-- | SHHH  | male   | 5559255 |  5 |
+-- +-------+--------+---------+----+
+-- 2 rows in set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS WHERE NAME LIKE "%S%";
+-- +--------+--------+---------+----+
+-- | NAME   | Gender | CHARGES | id |
+-- +--------+--------+---------+----+
+-- | CHRIS  | male   |  350000 |  1 |
+-- | SALMIN | male   | 5559255 |  2 |
+-- | SHHH   | male   | 5559255 |  5 |
+-- +--------+--------+---------+----+
+-- 3 rows in set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS WHERE CHARGES >= 350000 AND ID <4;
+-- +--------+--------+---------+----+
+-- | NAME   | Gender | CHARGES | id |
+-- +--------+--------+---------+----+
+-- | CHRIS  | male   |  350000 |  1 |
+-- | SALMIN | male   | 5559255 |  2 |
+-- | AVI    | male   | 8956232 |  3 |
+-- +--------+--------+---------+----+
+-- 3 rows in set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS WHERE NOT CHARGES >= 350000 AND ID <4;
+-- Empty set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS WHERE NOT (CHARGES >= 350000 AND ID <4);
+-- +-------+--------+---------+----+
+-- | NAME  | Gender | CHARGES | id |
+-- +-------+--------+---------+----+
+-- | MK    | male   |  350000 |  4 |
+-- | SHHH  | male   | 5559255 |  5 |
+-- | AYYYY | male   | 8956232 |  6 |
+-- +-------+--------+---------+----+
+-- 3 rows in set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS ORDER BY CHARGES ASC;
+-- +--------+--------+---------+----+
+-- | NAME   | Gender | CHARGES | id |
+-- +--------+--------+---------+----+
+-- | CHRIS  | male   |  350000 |  1 |
+-- | MK     | male   |  350000 |  4 |
+-- | SALMIN | male   | 5559255 |  2 |
+-- | SHHH   | male   | 5559255 |  5 |
+-- | AVI    | male   | 8956232 |  3 |
+-- | AYYYY  | male   | 8956232 |  6 |
+-- +--------+--------+---------+----+
+-- 6 rows in set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS ORDER BY CHARGES DESC;
+-- +--------+--------+---------+----+
+-- | NAME   | Gender | CHARGES | id |
+-- +--------+--------+---------+----+
+-- | AVI    | male   | 8956232 |  3 |
+-- | AYYYY  | male   | 8956232 |  6 |
+-- | SALMIN | male   | 5559255 |  2 |
+-- | SHHH   | male   | 5559255 |  5 |
+-- | CHRIS  | male   |  350000 |  1 |
+-- | MK     | male   |  350000 |  4 |
+-- +--------+--------+---------+----+
+-- 6 rows in set (0.00 sec)
+
+-- mysql> INSERT INTO ACTORS (NAME,Genders CHARGES) VALUES ("MARK RUDDLAO" , "MALE",350000);
+-- ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CHARGES) VALUES ("MARK RUDDLAO" , "MALE",350000)' at line 1
+-- mysql> INSERT INTO ACTORS (NAME,Genders, CHARGES) VALUES ("MARK RUDDLAO" , "MALE",350000);
+-- ERROR 1054 (42S22): Unknown column 'Genders' in 'field list'
+-- mysql> INSERT INTO ACTORS (NAME,Gender, CHARGES) VALUES ("MARK RUDDLAO" , "MALE",350000);
+-- Query OK, 1 row affected (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS ORDER BY CHARGES DESC, NAME;
+-- +--------------+--------+---------+----+
+-- | NAME         | Gender | CHARGES | id |
+-- +--------------+--------+---------+----+
+-- | AVI          | male   | 8956232 |  3 |
+-- | AYYYY        | male   | 8956232 |  6 |
+-- | SALMIN       | male   | 5559255 |  2 |
+-- | SHHH         | male   | 5559255 |  5 |
+-- | CHRIS        | male   |  350000 |  1 |
+-- | MARK RUDDLAO | male   |  350000 |  7 |
+-- | MK           | male   |  350000 |  4 |
+-- +--------------+--------+---------+----+
+-- 7 rows in set (0.00 sec)
+
+-- mysql> SELECT * FROM ACTORS ORDER BY CHARGES DESC, NAME DESC;
+-- +--------------+--------+---------+----+
+-- | NAME         | Gender | CHARGES | id |
+-- +--------------+--------+---------+----+
+-- | AYYYY        | male   | 8956232 |  6 |
+-- | AVI          | male   | 8956232 |  3 |
+-- | SHHH         | male   | 5559255 |  5 |
+-- | SALMIN       | male   | 5559255 |  2 |
+-- | MK           | male   |  350000 |  4 |
+-- | MARK RUDDLAO | male   |  350000 |  7 |
+-- | CHRIS        | male   |  350000 |  1 |
+-- +--------------+--------+---------+----+
+-- 7 rows in set (0.00 sec)
+
+-- mysql>
